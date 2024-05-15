@@ -121,15 +121,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 drawCircle(0);
                 return;
             }
-
+        
             remainingTime--;
             elapsedTime++;
-            timeDisplay.textContent = '残り時間: ' + formatTime(remainingTime);
+            let remainingTimeString = formatTime(remainingTime);
+            let [minutes, seconds] = remainingTimeString.split(':');
+        
+            if (remainingTime < 60) {
+                // 残り時間が1分未満の場合、分と秒の数字を赤色に変更
+                minutes = `<span style="color: red;">${minutes}</span>`;
+                seconds = `<span style="color: red;">${seconds}</span>`;
+            }
+        
+            timeDisplay.innerHTML = `残り時間: ${minutes}:${seconds}`;
             elapsedTimeDisplay.textContent = '経過時間: ' + formatTime(elapsedTime);
-
+        
             drawCircle(remainingTime / totalTime);
         }
-
+        
         function formatTime(time) {
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
@@ -139,20 +148,24 @@ document.addEventListener('DOMContentLoaded', () => {
         function drawCircle(percentage) {
             const radius = canvas.width / 2;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+        
+            // 残り時間に応じて円弧の色を決定
+            const arcColor = remainingTime < 60 ? '#ffb6c1' : '#b0c4de'; // 1分未満の場合はlightpink、それ以外はlightsteelblue
+        
             // 背景円
             ctx.beginPath();
             ctx.arc(radius, radius, radius, 0, 2 * Math.PI);
             ctx.fillStyle = '#eee';
             ctx.fill();
-
+        
             // 残り時間の円弧
             ctx.beginPath();
             ctx.moveTo(radius, radius);
             ctx.arc(radius, radius, radius, -0.5 * Math.PI, (2 * percentage - 0.5) * Math.PI);
             ctx.lineTo(radius, radius);
-            ctx.fillStyle = '#b0c4de'; // lightsteelblue
+            ctx.fillStyle = arcColor;
             ctx.fill();
-        }
+        }        
+        
     }
 });

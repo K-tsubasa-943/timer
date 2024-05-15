@@ -1,22 +1,24 @@
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     font-family: Arial, sans-serif;
 }
 
-#timer {
+#controls {
+    margin-bottom: 20px;
+}
+
+#timers-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* タイマーが横並びになります */
+}
+
+.timer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
     text-align: center;
-}
-
-#time-display, #elapsed-time-display {
-    font-size: 1.5em;
-    margin-top: 10px;
-}
-
-input, button {
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 1em;
+    width: 220px; /* タイマーの横幅を指定 */
 }

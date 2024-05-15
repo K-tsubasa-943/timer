@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxTimers = 3;
     const minTimers = 1;
 
+    // 初期状態で表示されているタイマーを設定
+    setupTimer(1);
+
     addTimerButton.addEventListener('click', () => {
         if (timerCount < maxTimers) {
             timerCount++;
             timersContainer.appendChild(createTimerElement(timerCount));
+            setupTimer(timerCount);
         }
     });
 
@@ -37,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="stop-button-${timerId}">停止</button>
             <button id="reset-button-${timerId}">リセット</button>
         `;
-
-        setupTimer(timerId);
-
         return timerDiv;
     }
 
@@ -154,7 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fill();
         }
     }
-
-    // 初期状態で表示されているタイマーを設定
-    setupTimer(1);
 });

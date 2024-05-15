@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイムキーパー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="timer">
+        <canvas id="canvas" width="200" height="200"></canvas>
+        <div id="time-display">残り時間: 00:00</div>
+        <div id="elapsed-time-display">経過時間: 00:00</div>
+        <input type="text" id="time-input" placeholder="分数を入力" pattern="\d*" inputmode="numeric">
+        <button id="start-button">スタート</button>
+        <button id="stop-button">停止</button>
+        <button id="reset-button">リセット</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

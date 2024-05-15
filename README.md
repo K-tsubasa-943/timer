@@ -34,4 +34,4 @@
 1. リポジトリをクローンします:
 
    ```bash
-   git clone https://github.com/yourusername/timer-app.git
+   git clone hhttps://github.com/K-tsubasa-943/time.git
